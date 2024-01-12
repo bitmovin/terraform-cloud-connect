@@ -2,13 +2,13 @@
 # IAM User
 ##########################
 variable "user_name" {
-  description = "Bitmovin IAM user for Cloud Connect Encoding"
+  description = "Name of the Bitmovin IAM user for Cloud Connect Encoding"
   type        = string
   default     = "bitmovin-cloud-connect-user"
 }
 
 variable "policy_name" {
-  description = "Bitmovin Inline Policy for Cloud Connect Encoding"
+  description = "Name of the Bitmovin Inline Policy for Cloud Connect Encoding"
   type        = string
   default     = "bitmovin-inline-policy"
 }
@@ -17,7 +17,7 @@ variable "policy_name" {
 # Security group
 ##########################
 variable "security_group_name" {
-  description = "Bitmovin Security Group for EC2 instances"
+  description = "Name of the Bitmovin Security Group for Cloud Connect Encoding"
   type        = string
   default     = "bitmovin-security-group"
 }

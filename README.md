@@ -2,7 +2,7 @@
 
 ## Description
 
-The main purpose of this module is to create an IAM User with enough permission and a Security Group with correct Inbound and Outbound rules so that Bitmovin's Cloud Connect product will be able to run Video Encodings in the configured infrastructure.
+The main purpose of this script is to create an IAM User with enough permission and a Security Group with correct Inbound and Outbound rules so that Bitmovin's Cloud Connect product will be able to run Video Encodings in the configured infrastructure.
 
 The Terraform Cloud Connect module does the following:
 
@@ -16,7 +16,7 @@ The Terraform Cloud Connect module does the following:
     - Secret Access Key
     - Security Group Id
 
-The above outputs is required for the configuration of Bitmovin's Cloud Connect.
+The outputs that are produced by the script can be used in a next step to configure the Bitmovin Encoder for Cloud Connect.
 
 ## Usage
 

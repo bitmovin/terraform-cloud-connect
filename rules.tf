@@ -26,7 +26,7 @@ locals {
 }
 
 resource "aws_security_group_rule" "all_traffic_within_ingress_rule" {
-  description = "Allow communication between the main VM instance and its  VM instances"
+  description = "Allow communication between the main VM instance and the worker VM instances"
   
   security_group_id = aws_security_group.security_group.id
   type              = local.ingress
@@ -50,7 +50,7 @@ resource "aws_security_group_rule" "encoding_service_ingress_rule" {
 }
 
 resource "aws_security_group_rule" "incoming_commands_ingress_rule" {
-  description = "Allow incoming commands (i.e. pulling and starting docker containers)"
+  description = "Allow incoming docker commands (i.e. pulling and starting docker containers)"
 
   security_group_id = aws_security_group.security_group.id
   type              = local.ingress
@@ -62,7 +62,7 @@ resource "aws_security_group_rule" "incoming_commands_ingress_rule" {
 }
 
 resource "aws_security_group_rule" "all_traffic_egress_rule" {
-  description = "Allow all outbound IPv4 traffic"
+  description = "Allow all outbound IPv4 traffic (i.e. responding to the service that manages the encoding, encoding output, temporary states)"
 
   security_group_id = aws_security_group.security_group.id
   type              = local.egress
