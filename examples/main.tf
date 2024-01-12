@@ -1,11 +1,7 @@
-provider "aws" {
-  region = "local"
-}
+provider "aws" {}
 
 module "bitmovin_cloud_connect" {
   source  = "./.."
-
-  role_arn = null  #"arn:aws:iam::123456789123:role/adminRoleInYourCompany"
 
   user_name = "bitmovin-cloud-connect-user"
   policy_name = "bitmovin-inline-policy"
@@ -22,21 +18,4 @@ module "bitmovin_cloud_connect" {
            company = "bitmovin",
            product = "cloud-connect"
          }
-}
-
-output "account_id" {
-  value = module.bitmovin_cloud_connect.account_id
-}
-
-output "access_key" {
-  value = module.bitmovin_cloud_connect.access_key
-}
-
-output "secret_access_key" {
-  value     = module.bitmovin_cloud_connect.secret_access_key
-  sensitive = true
-}
-
-output "security_group_id" {
-  value = module.bitmovin_cloud_connect.security_group_id
 }

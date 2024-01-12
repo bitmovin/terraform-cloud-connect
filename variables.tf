@@ -1,13 +1,4 @@
 ##########################
-# Role ARN
-##########################
-variable "role_arn" {
-  description = "IAM Role to assume in order to create Bitmovin User and Security Group"
-  type        = string
-  default     = null
-}
-
-##########################
 # IAM User
 ##########################
 variable "user_name" {
