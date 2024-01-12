@@ -1,5 +1,3 @@
-provider "aws" {}
-
 module "bitmovin_cloud_connect" {
   source  = "./.."
 
