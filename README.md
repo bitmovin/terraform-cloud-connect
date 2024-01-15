@@ -44,7 +44,9 @@ You can use the Bitmovin Cloud Connect Terraform module like this:
 ````
 provider "aws" {
   region   = "eu-west-1"
-  role_arn = "arn:aws:iam::123456789012:role/roleWithAccountCreationRights"
+  assume_role {
+    role_arn = "arn:aws:iam::123456789012:role/roleWithAccountCreationRights"
+  }
 }
 
 module "bitmovin_cloud_connect" {
