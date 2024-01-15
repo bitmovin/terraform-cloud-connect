@@ -4,13 +4,13 @@
 variable "user_name" {
   description = "Name of the Bitmovin IAM user for Cloud Connect Encoding"
   type        = string
-  default     = "bitmovin-cloud-connect-user"
+  default     = "bitmovin-cloud-connect"
 }
 
 variable "policy_name" {
   description = "Name of the Bitmovin Inline Policy for Cloud Connect Encoding"
   type        = string
-  default     = "bitmovin-inline-policy"
+  default     = "bitmovin-cloud-connect"
 }
 
 ##########################
@@ -19,7 +19,7 @@ variable "policy_name" {
 variable "security_group_name" {
   description = "Name of the Bitmovin Security Group for Cloud Connect Encoding"
   type        = string
-  default     = "bitmovin-security-group"
+  default     = "bitmovin-cloud-connect"
 }
 
 variable "live_rtmp" {
@@ -40,13 +40,13 @@ variable "live_zixi" {
   default     = false
 }
 
-variable "live_ingress_cidr_blocks" {
+variable "live_ingress_ipv4_network_blocks" {
   description = "All Ipv4"
   type    = list(string)
   default = ["0.0.0.0/0"]
 }
 
-variable "live_ingress_ipv6_cidr_blocks" {
+variable "live_ingress_ipv6_network_blocks" {
   description = "All Ipv6"
   type    = list(string)
   default = ["::/0"]

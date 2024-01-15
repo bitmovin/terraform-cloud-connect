@@ -7,7 +7,7 @@ The main purpose of this script is to create an IAM User with enough permission 
 The Terraform Cloud Connect module does the following:
 
 - Creates new IAM user
-- Assigns required permission required for Cloud-Connect: ~ AmazonEC2FullAccess
+- Assigns required permission for Cloud-Connect: approx. AmazonEC2FullAccess
 - Creates a Security Group
 - Adds required Inbound and Outbound rules
 - Outputs:
@@ -17,6 +17,13 @@ The Terraform Cloud Connect module does the following:
     - Security Group Id
 
 The outputs that are produced by the script can be used in a next step to configure the Bitmovin Encoder for Cloud Connect.
+
+## Provider
+
+**Important**
+- The script currently supports only one provider and one region at a time. 
+- Please specify the desired region where you expect your encodings to run. 
+- Additionally, provide the roles that may grant account creation rights for the specified provider.
 
 ## Usage
 
@@ -35,28 +42,19 @@ terraform apply
 You can use the Bitmovin Cloud Connect Terraform module like this:
 
 ````
+provider "aws" {
+  region   = "eu-west-1"
+  role_arn = "arn:aws:iam::123456789012:role/roleWithAccountCreationRights"
+}
+
 module "bitmovin_cloud_connect" {
-  source  = "bitmovin/terraform-cloud-connect"
-
-  user_name = "bitmovin-cloud-connect-user"
-  policy_name = "bitmovin-inline-policy"
-  security_group_name = "bitmovin-security-group"
-
-  live_rtmp = false
-  live_srt = false
-  live_zixi = false
-
-  live_ingress_cidr_blocks = ["0.0.0.0/0"]
-  live_ingress_ipv6_cidr_blocks = ["::/0"]
-
-  tags = {
-           company = "bitmovin",
-           product = "cloud-connect"
-         }
+  source  = "github.com/bitmovin/terraform-cloud-connect/modules/aws"
 }
 ````
 
-We need the following output:
+For all possible configurations, please check [Inputs](#inputs).
+
+Based on [Bitmovin Cloud Connect Configuration](https://developer.bitmovin.com/encoding/docs/using-bitmovin-cloud-connect-with-aws#configure-your-bitmovin-account), we need the following output:
 
 ````
 output "account_id" {
@@ -110,4 +108,4 @@ terraform destroy
 
 ## Examples
 
-examples/main.tf
+[AWS Example](https://github.com/bitmovin/terraform-cloud-connect/tree/main/examples/aws) - Use Bitmovin AWS Cloud Connect.
