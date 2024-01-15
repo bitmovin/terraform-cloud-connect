@@ -6,7 +6,7 @@ resource "aws_iam_user" "ec2_user" {
 resource "aws_iam_policy" "inline_policy" {
   description = "Required permissions for Bitmovin Cloud Connect"
   name        = var.policy_name
-  policy      = jsondecode(file("${path.module}/permissions.json"))
+  policy      = jsonencode(jsondecode(file("${path.module}/permissions.json")))
   tags        = var.tags
 }
 
