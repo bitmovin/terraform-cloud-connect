@@ -95,16 +95,16 @@ terraform destroy
 
 | Input        | Description           | Type  | Default  |
 | :------------|:----------------------|:------|:---------|
-| user_name | Name of the IAM user that will be created | string | "bitmovin-cloud-connect-user"|
-| policy_name | Name of the Policy that will be created | string |  "bitmovin-inline-policy" |
-| security_group_name | Name of the Security Group that will be created | string | "bitmovin-security-group" |
+| user_name | Name of the IAM user that will be created | string | "bitmovin-cloud-connect"|
+| policy_name | Name of the Policy that will be created | string | "bitmovin-cloud-connect"" |
+| security_group_name | Name of the Security Group that will be created | string | "bitmovin-cloud-connect" |
 | | | | |
 | live_rtmp | Prepare live RTMP by setting the correct ingress rules | bool | false |
 | live_srt | Prepare live SRT by setting the correct ingress rules | bool | false |
 | live_zixi | Prepare live Zixi by setting the correct ingress rules | bool | false |
 | | | | |
-| live_ingress_cidr_blocks | Allowed ingress IPv4 used for live (RTMP, SRT, Zixi) | list(string) | ["0.0.0.0/0"] |
-| live_ingress_ipv6_cidr_blocks | Allowed ingress IPv6 used for live (RTMP, SRT, Zixi) | list(string) | ["::/0"] |
+| live_ingress_ipv4_network_blocks | Allowed ingress IPv4 used for live (RTMP, SRT, Zixi) | list(string) | ["0.0.0.0/0"] |
+| live_ingress_ipv6_network_blocks | Allowed ingress IPv6 used for live (RTMP, SRT, Zixi) | list(string) | ["::/0"] |
 | | | | |
 | tags | Tags that will be attached to the created resources | map | { company = "bitmovin", product = "cloud-connect" } |
 
