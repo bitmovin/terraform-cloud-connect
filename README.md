@@ -16,7 +16,7 @@ The Terraform Cloud Connect module does the following:
     - Secret Access Key
     - Security Group Id
 
-The outputs that are produced by the script can be used in a next step to configure the Bitmovin Encoder for Cloud Connect.
+The outputs that are produced by the script can be used in a next step to configure the [Bitmovin Encoder for Cloud Connect](https://developer.bitmovin.com/encoding/docs/using-bitmovin-cloud-connect-with-aws#configure-your-bitmovin-account).
 
 ## Provider
 
