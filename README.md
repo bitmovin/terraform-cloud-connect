@@ -96,7 +96,7 @@ terraform destroy
 | Input        | Description           | Type  | Default  |
 | :------------|:----------------------|:------|:---------|
 | user_name | Name of the IAM user that will be created | string | "bitmovin-cloud-connect"|
-| policy_name | Name of the Policy that will be created | string | "bitmovin-cloud-connect"" |
+| policy_name | Name of the Policy that will be created | string | "bitmovin-cloud-connect" |
 | security_group_name | Name of the Security Group that will be created | string | "bitmovin-cloud-connect" |
 | | | | |
 | live_rtmp | Prepare live RTMP by setting the correct ingress rules | bool | false |
