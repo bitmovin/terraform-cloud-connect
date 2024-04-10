@@ -5,8 +5,10 @@ locals {
   all_ports = 0
   ssh_port = 22
   rtmp_port = 1935
+  rtmps_port = 443
   zixi_port = 4444
   encoding_port = 9999
+  encoding_port_https = 9443
 
   all_protocols = "-1"
   tcp = "tcp"
@@ -52,6 +54,18 @@ resource "aws_security_group_rule" "encoding_service_ingress_rule" {
   cidr_blocks = local.bitmovin_static_network_blocks
 }
 
+resource "aws_security_group_rule" "encoding_service_https_ingress_rule" {
+  description = "Allow HTTPS communication with the service that manages the encoding"
+
+  security_group_id = aws_security_group.security_group.id
+  type              = local.ingress
+
+  from_port   = local.encoding_port_https
+  to_port     = local.encoding_port_https
+  protocol    = local.tcp
+  cidr_blocks = local.bitmovin_static_network_blocks
+}
+
 resource "aws_security_group_rule" "incoming_commands_ingress_rule" {
   description = "Allow incoming docker commands (i.e. pulling and starting docker containers)"
 
@@ -86,6 +100,21 @@ resource "aws_security_group_rule" "live_rtmp_ingress_rule" {
 
   from_port   = local.rtmp_port
   to_port     = local.rtmp_port
+  protocol    = local.tcp
+  cidr_blocks = local.live_ipv4_network_blocks
+  ipv6_cidr_blocks = local.live_ipv6_network_blocks
+}
+
+resource "aws_security_group_rule" "live_rtmps_ingress_rule" {
+  description = "Allow RTMPS live streams"
+
+  count = var.live_rtmp ? 1 : 0
+
+  security_group_id = aws_security_group.security_group.id
+  type              = local.ingress
+
+  from_port   = local.rtmps_port
+  to_port     = local.rtmps_port
   protocol    = local.tcp
   cidr_blocks = local.live_ipv4_network_blocks
   ipv6_cidr_blocks = local.live_ipv6_network_blocks
