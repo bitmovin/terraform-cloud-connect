@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "bitmovin_cloud_connect" {
-  source  = "github.com/bitmovin/terraform-cloud-connect//modules/aws"
+  source = "github.com/bitmovin/terraform-cloud-connect/blob/main/modules/aws"
 
   # For all possible input variables, please check:
   # Documentation: https://github.com/bitmovin/terraform-cloud-connect/blob/main/README.md#inputs
