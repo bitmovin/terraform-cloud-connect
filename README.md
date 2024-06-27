@@ -37,6 +37,8 @@ The GCP module will create the following resources to enable running encoding jo
   - Network ID
   - Subnet ID instructions
 
+The outputs that are produced by the script can be used in a next step to configure the [Bitmovin Encoder for Cloud Connect](https://developer.bitmovin.com/encoding/docs/using-bitmovin-cloud-connect-with-gcp#configure-your-bitmovin-account).
+
 ## Provider
 
 **Important**
