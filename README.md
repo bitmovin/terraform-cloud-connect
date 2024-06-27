@@ -56,7 +56,7 @@ Install Terraform and the provider of your choice:
 
 Run:
 
-```
+```sh
 terraform init
 terraform plan
 terraform apply
@@ -103,13 +103,13 @@ Based on the selected provider module, the script will output different informat
 
 Print out the outputs:
 
-```
+```sh
 terraform output -json
 ```
 
 Remove the created resources with the following commands:
 
-```
+```sh
 terraform destroy
 ```
 
