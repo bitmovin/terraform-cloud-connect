@@ -10,13 +10,13 @@ variable "project_id" {
 # Service account
 ##########################
 variable "account_id" {
-  description = "Account ID of the Bitmovin IAM user for Cloud Connect Encoding"
+  description = "Account ID of the Service Account user for Cloud Connect Encoding"
   type        = string
   default     = "bitmovin-cloud-connect-user"
 }
 
 variable "user_name" {
-  description = "Name of the Bitmovin IAM user for Cloud Connect Encoding"
+  description = "Name of the Service Account user for Cloud Connect Encoding"
   type        = string
   default     = "bitmovin-cloud-connect-user"
 }
