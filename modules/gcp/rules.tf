@@ -38,7 +38,7 @@ resource "google_compute_firewall" "bitmovin_allow_internal" {
 }
 
 resource "google_compute_firewall" "bitmovin_allow_ssh" {
-  description   = "For incoming commands (i.e. pulling and starting docker containers)"
+  description   = "For incoming commands from the bitmovin API to control the encoding"
   name          = "${google_compute_network.bitmovin_vpc_network.name}-allow-ssh"
   network       = google_compute_network.bitmovin_vpc_network.name
   source_ranges = local.bitmovin_static_network_blocks
