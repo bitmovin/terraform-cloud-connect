@@ -67,7 +67,7 @@ resource "aws_security_group_rule" "encoding_service_https_ingress_rule" {
 }
 
 resource "aws_security_group_rule" "incoming_commands_ingress_rule" {
-  description = "For incoming commands from the bitmovin API to control the encoding"
+  description = "For incoming commands from the BSitmovin API to control the encoding"
 
   security_group_id = aws_security_group.security_group.id
   type              = local.ingress
