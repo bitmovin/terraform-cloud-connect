@@ -24,7 +24,7 @@ The outputs that are produced by the script can be used in a next step to config
 
 The GCP module will create the following resources to enable running encoding jobs with Bitmovin Cloud Connect:
 
-- Enable the Compute Engine API
+- Enables the Compute Engine API
 - Creates a new Service Account
   - with the permissions of role `roles/compute.instanceAdmin.v1`
   - with an Access Key
@@ -119,7 +119,7 @@ terraform destroy
 
 ## Inputs
 
-## All providers
+### All providers
 
 | Input                            | Description                                            | Type         | Default       |
 | :------------------------------- | :----------------------------------------------------- | :----------- | :------------ |
@@ -129,7 +129,7 @@ terraform destroy
 | live_ingress_ipv4_network_blocks | Allowed ingress IPv4 used for live (RTMP, SRT, Zixi)   | list(string) | ["0.0.0.0/0"] |
 | live_ingress_ipv6_network_blocks | Allowed ingress IPv6 used for live (RTMP, SRT, Zixi)   | list(string) | ["::/0"]      |
 
-## AWS-only
+### AWS-only
 
 | Input               | Description                                         | Type   | Default                                             |
 | :------------------ | :-------------------------------------------------- | :----- | :-------------------------------------------------- |
@@ -138,7 +138,7 @@ terraform destroy
 | security_group_name | Name of the Security Group that will be created     | string | "bitmovin-cloud-connect"                            |
 | tags                | Tags that will be attached to the created resources | map    | { company = "bitmovin", product = "cloud-connect" } |
 
-## GCP-only
+### GCP-only
 
 | Input                 | Description                                                       | Type   | Default                       |
 | :-------------------- | :---------------------------------------------------------------- | :----- | :---------------------------- |

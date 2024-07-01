@@ -13,7 +13,7 @@ output "private_key" {
 
 # output a message guiding users on handling the private key securely
 output "private_key_instructions" {
-  value = "The see your private key, run `terraform output -json`. Handle credentials carefully."
+  value = "To see your private key, run `terraform output -json`. Handle credentials carefully."
 }
 
 output "network_id" {
@@ -21,5 +21,5 @@ output "network_id" {
 }
 
 output "subnet_id_instructions" {
-  value = "The find your region's subnet id, please go to https://console.cloud.google.com/networking/networks/list"
+  value = "To find your region's subnet id, please go to https://console.cloud.google.com/networking/networks/list"
 }
