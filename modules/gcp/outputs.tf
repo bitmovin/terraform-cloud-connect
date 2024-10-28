@@ -4,27 +4,15 @@ output "project_id" {
   value = data.google_project.bitmovin_project.id
 }
 
-data "google_compute_network" "bitmovin_network" {
-  name = var.network_name
-}
-
 output "network_id" {
-  value = data.google_compute_network.bitmovin_network.name
-}
-
-data "google_service_account" "bitmovin_account" {
-  account_id = var.account_id
+  value = google_compute_network.bitmovin_vpc_network.name
 }
 
 output "service_account_email" {
-  value = data.google_service_account.bitmovin_account.email
-}
-
-data "google_service_account_key" "mykey" {
-  name = google_service_account_key.mykey.name
+  value = google_service_account.bitmovin_account.email
 }
 
 output "private_key" {
-  value     = data.google_service_account_key.mykey
+  value     = google_service_account_key.mykey.name
   sensitive = true
 }
