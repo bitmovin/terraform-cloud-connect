@@ -4,10 +4,6 @@ output "project_id" {
   value = data.google_project.bitmovin_project.id
 }
 
-output "network_id" {
-  value = google_compute_network.bitmovin_vpc_network.name
-}
-
 output "network" {
   value = "/global/networks/${google_compute_network.bitmovin_vpc_network.name}"
 }
@@ -18,7 +14,9 @@ data "google_compute_network" "bitmovin-network" {
 }
 
 output "subnets" {
-  value = data.google_compute_network.bitmovin-network.subnetworks_self_links
+  value = [
+    for value in data.google_compute_network.bitmovin-network.subnetworks_self_links: regex(".*(\\/regions\\/.*)$", value)[0]
+  ]
 }
 
 output "service_account_email" {
