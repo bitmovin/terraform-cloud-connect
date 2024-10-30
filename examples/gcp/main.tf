@@ -1,5 +1,5 @@
 locals {
-  project_id = "{{YOUR_PROJECT_ID}}"
+  project_id = "tischler-terraform-testing"
 }
 
 provider "google" {
