@@ -21,6 +21,12 @@ variable "user_name" {
   default     = "bitmovin-cloud-connect-user"
 }
 
+variable "service_account_network_admin_permissions" {
+  description = "By setting this to true, the service Account will also get permissions to manage static IP addresses"
+  type        = bool
+  default     = false
+}
+
 ##########################
 # VPC network
 ##########################
@@ -50,6 +56,6 @@ variable "live_zixi" {
 
 variable "live_ingress_ipv4_network_blocks" {
   description = "All IPv4"
-  type        = list(string)
-  default     = ["0.0.0.0/0"]
+  type = list(string)
+  default = ["0.0.0.0/0"]
 }
