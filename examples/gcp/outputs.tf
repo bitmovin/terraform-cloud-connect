@@ -1,5 +1,5 @@
 output "project_id" {
-  value = module.bitmovin_cloud_connect.project_id
+  value = local.project_id
 }
 
 output "service_account_email" {
