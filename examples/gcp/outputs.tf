@@ -17,9 +17,9 @@ output "private_key_instructions" {
 }
 
 output "network_id" {
-  value = module.bitmovin_cloud_connect.network_id
+  value = module.bitmovin_cloud_connect.network
 }
 
-output "subnet_id_instructions" {
-  value = "To find your region's subnet id, please go to https://console.cloud.google.com/networking/networks/list"
+output "subnet_ids" {
+  value = module.bitmovin_cloud_connect.subnets
 }
