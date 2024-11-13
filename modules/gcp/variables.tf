@@ -36,6 +36,12 @@ variable "network_name" {
   default     = "bitmovin-cloud-connect"
 }
 
+variable "enabled_regions" {
+  description = "If the VPC should not be created in auto-mode, specify the regions and cidr-ranges"
+  type = list(object({region: string, cidr: string}))
+  default = []
+}
+
 variable "live_rtmp" {
   description = "Whether to support RTMP live streams"
   type        = bool
