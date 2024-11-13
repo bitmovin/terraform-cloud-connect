@@ -1,7 +1,7 @@
 locals {
   internal_network_blocks        = ["10.0.0.0/8"]
   bitmovin_static_network_blocks = ["104.199.97.13/32", "35.205.157.162/32"]
-  is_automode_vpc = lenght(var.enabled_regions) == 0 ? true : false
+  is_automode_vpc = length(var.enabled_regions) == 0 ? true : false
 }
 
 # enable Compute Engine API
