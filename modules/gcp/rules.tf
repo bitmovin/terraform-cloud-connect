@@ -1,6 +1,7 @@
 locals {
   internal_network_blocks        = ["10.0.0.0/8"]
   bitmovin_static_network_blocks = ["104.199.97.13/32", "35.205.157.162/32"]
+  is_automode_vpc = length(var.enabled_regions) == 0 ? true : false
 }
 
 # enable Compute Engine API
@@ -12,8 +13,24 @@ resource "google_project_service" "compute-engine" {
 # create auto-mode VPC
 resource "google_compute_network" "bitmovin_vpc_network" {
   name = var.network_name
+  auto_create_subnetworks = local.is_automode_vpc
 
   depends_on = [google_project_service.compute-engine]
+}
+
+resource "google_compute_subnetwork" "bitmovin_vpc_subnetwork" {
+  for_each = {
+    for index, region in var.enabled_regions:
+    region.region => region
+  }
+
+  ip_cidr_range = each.value.cidr
+  name = "${var.network_name}-${each.value.region}-subnet"
+  network = google_compute_network.bitmovin_vpc_network.id
+  region = each.value.region
+  project = var.project_id
+  stack_type = "IPV4_ONLY"
+  purpose = "PRIVATE"
 }
 
 resource "google_compute_firewall" "bitmovin_allow_internal" {

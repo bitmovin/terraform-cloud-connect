@@ -27,3 +27,6 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# Ignore Intellij-specific files
+.idea

@@ -14,3 +14,13 @@ module "bitmovin_cloud_connect" {
   # For all possible input variables, please check:
   # Documentation: https://github.com/bitmovin/terraform-cloud-connect/blob/main/README.md#inputs
 }
+
+module "bitmovin_cloud_connect_with_specific_subnets" {
+  project_id = local.project_id
+  source = "git@github.com:bitmovin/terraform-cloud-connect.git//modules/gcp"
+
+  network_name = "selected-subnet-regions-only"
+  enabled_regions = [
+    {"region": "us-central1", "cidr": "10.128.0.0/20"}
+  ]
+}
