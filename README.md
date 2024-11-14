@@ -28,7 +28,9 @@ The GCP module will create the following resources to enable running encoding jo
 - Creates a new Service Account
   - with the permissions of role `roles/compute.instanceAdmin.v1`
   - with an Access Key
-- Creates a new auto-mode VPC network
+- Creates a new VPC network
+  - In auto-mode if nothing is provided
+  - Only in certain regions if a list of objects with regions and cidr-ranges is provided
 - Creates the required firewall rules
 - Outputs:
   - Project ID
