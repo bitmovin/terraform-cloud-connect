@@ -38,7 +38,7 @@ variable "network_name" {
 
 variable "enabled_regions" {
   description = "If the VPC should not be created in auto-mode, specify the regions and cidr-ranges"
-  type = list(object({region: string, cidr: string}))
+  type = list(object({ region : string, cidr : string }))
   default = []
 }
 
@@ -64,4 +64,10 @@ variable "live_ingress_ipv4_network_blocks" {
   description = "All IPv4"
   type = list(string)
   default = ["0.0.0.0/0"]
+}
+
+variable "enable_static_network_blocks" {
+  description = "Use the Bitmovin Static Network Blocks"
+  type        = bool
+  default     = true
 }

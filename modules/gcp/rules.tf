@@ -58,7 +58,7 @@ resource "google_compute_firewall" "bitmovin_allow_ssh" {
   description   = "For incoming commands from the Bitmovin API to control the encoding"
   name          = "${google_compute_network.bitmovin_vpc_network.name}-allow-ssh"
   network       = google_compute_network.bitmovin_vpc_network.name
-  source_ranges = local.bitmovin_static_network_blocks
+  source_ranges = var.enable_static_network_blocks == true ? local.bitmovin_static_network_blocks : ["0.0.0.0/0"]
 
   allow {
     protocol = "tcp"
@@ -70,7 +70,7 @@ resource "google_compute_firewall" "bitmovin_encoder_service" {
   description   = "For communication with the service that manages the encoding"
   name          = "${google_compute_network.bitmovin_vpc_network.name}-encoder-service"
   network       = google_compute_network.bitmovin_vpc_network.name
-  source_ranges = local.bitmovin_static_network_blocks
+  source_ranges = var.enable_static_network_blocks == true ? local.bitmovin_static_network_blocks : ["0.0.0.0/0"]
 
   allow {
     protocol = "tcp"
@@ -82,7 +82,7 @@ resource "google_compute_firewall" "bitmovin_encoder_service_https" {
   description   = "For HTTPS communication with the service that manages the encoding"
   name          = "${google_compute_network.bitmovin_vpc_network.name}-encoder-service-https"
   network       = google_compute_network.bitmovin_vpc_network.name
-  source_ranges = local.bitmovin_static_network_blocks
+  source_ranges = var.enable_static_network_blocks == true ? local.bitmovin_static_network_blocks : ["0.0.0.0/0"]
 
   allow {
     protocol = "tcp"
